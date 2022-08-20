@@ -1,0 +1,117 @@
+Surveys
+id name createdBy createdOn
+15  Edu Asim
+
+Questions
+id   text       survey_id
+13    Color?     15 
+
+
+Survey_Response
+id  survey_id submitted_by    submitted_on
+12      1         David           
+
+
+Survey_Response_Questions
+id survey_response_id question_id choice
+1   12                 13          Red
+1   12                 13          Green  
+
+
+
+
+create POST: http://localhost:4001/admin/survey/create
+{
+    "name": "Coffee survey",
+    "questions":[
+        {
+            "text":"What is your favourite coffee?",
+            "choices":["Black coffee", "Ice coffee", "Milk coffee"]
+        },
+        {
+            "text":"How many cups of coffee do you drink?",
+            "choices":["1-2", "2-3", "More than 3"]
+        }
+    ]
+}
+
+
+
+
+getAllSurveys GET: http://localhost:4001/admin/survey/get-all
+[
+    {
+        "id": "WcAvpWyou",
+        "questions": [
+            {
+                "id": "Hy_DOt3DPC",
+                "text": "What is your favourite coffee?",
+                "survey_id": "WcAvpWyou",
+                "choices": [
+                    "Black coffee",
+                    "Ice coffee",
+                    "Milk coffee"
+                ]
+            },
+            {
+                "id": "wkSha_bs5F",
+                "text": "How many cups of coffee do you drink?",
+                "survey_id": "WcAvpWyou",
+                "choices": [
+                    "1-2",
+                    "2-3",
+                    "More than 3"
+                ]
+            }
+        ],
+        "name": "Coffee survey",
+        "createdOn": "2022-08-20T04:59:47.128Z"
+    }
+]
+
+delete http://localhost:4001/admin/survey/delete?=
+
+
+Submit survey http://localhost:4001/participant/submit
+{
+    "survey_id":"I3aVJ16yn",
+    "submitted_by": "John Doe",
+    "answers":[
+        {
+            "text":"What is your favourite coffee?",
+            "chosen":["White coffee", "Ice coffee"]
+        },
+        {
+            "text":"How many cups of coffee do you drink?",
+            "chosen":["4-5"]
+        }
+    ]
+}
+
+Get Reponses for survey POST: http://localhost:4001/participant/response/get-by-survey?surveyId=I3aVJ16yn
+[
+    {
+        "id": "Pvg0vscJj",
+        "answers": [
+            {
+                "id": "OKubEKRdaN",
+                "question": "What is your favourite coffee?",
+                "survey_id": "Pvg0vscJj",
+                "selected_choices": [
+                    "White coffee",
+                    "Ice coffee"
+                ]
+            },
+            {
+                "id": "1cjm4fKRN0",
+                "question": "How many cups of coffee do you drink?",
+                "survey_id": "Pvg0vscJj",
+                "selected_choices": [
+                    "4-5"
+                ]
+            }
+        ],
+        "survey_id": "I3aVJ16yn",
+        "submitted_on": "Sat Aug 20 2022 10:11:02 GMT+0530 (India Standard Time)"
+    }
+]
