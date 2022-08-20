@@ -1,0 +1,85 @@
+Surveys
+id name createdBy createdOn
+15  Edu Asim
+
+Questions
+id   text       survey_id
+13    Color?     15 
+
+
+Survey_Response
+id  survey_id submitted_by    submitted_on
+12      1         David           
+
+
+Survey_Response_Questions
+id survey_response_id question_id choice
+1   12                 13          Red
+1   12                 13          Green  
+
+
+
+
+create
+{
+    "name": "Coffee survey",
+    "Questions":[
+        {
+            "text":"What is your favourite coffee?",
+            "choices":["Mocha", "Latte", "Cappucino"]
+        },
+        {
+            "text":"How many cups of coffee do you drink?",
+            "choices":["1-2", "2-3", "More than 3"]
+        }
+    ]
+}
+
+
+response get_survey/1
+{
+    Questions:[
+        {
+            text:"",
+            choices:[]
+        }
+    ]
+}
+
+
+fill_survey/1
+{
+    Questions:[
+        {
+            qid:
+            choices:[cid1,cid2]
+        }
+    ]
+}
+
+
+all_surveys{
+    surveys:[
+        {
+            id:
+            name:
+            createdBy:
+        }
+    ]
+}
+
+survey_responses/1{
+    Questions:[
+        {
+            id: 13
+            text:"Color?",
+            choices:[{
+                id:1
+                choice:"Red"
+            },{
+                id:1
+                choice:"Green"
+            }]
+        }
+    ]
+}
