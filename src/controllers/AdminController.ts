@@ -21,11 +21,11 @@ export class AdminController {
         const { body: params } = request
         let survey = new Survey(params);
         this.surveyRepository.save(survey);
-        return this.surveyRepository.getAll()
+        return "SUCCESS"
       }
       catch (e){
         console.log(e)
-        return "Error"
+        return "FAILURE"
       }
     }
 
@@ -33,11 +33,11 @@ export class AdminController {
       try{
         let surveyId = request.param('surveyId')
         this.surveyRepository.clear(surveyId)
-        return "Deleted"
+        return "SUCCESS"
       }
       catch (e){
         console.log(e)
-        return "Error"
+        return "FAILURE"
       }
     }
 }
