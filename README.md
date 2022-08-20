@@ -9,10 +9,10 @@ The APIs mentioned below are available for use:
 All the APIs are protected via token based authentication.
 
 
-Create Survey
-Method: POST
-URL: /admin/survey/create
-Request Body:
+<b>Create Survey</b><br />
+Method: POST<br />
+URL: /admin/survey/create<br />
+Request Body:<br />
 {
  "name": "Coffee survey",
  "questions":[
@@ -25,14 +25,14 @@ Request Body:
  "choices":["1-2", "2-3", "More than 3"]
  }
  ]
-}
+}<br />
 Response: SUCCESS/FAILURE
 
 
-Get All Surveys in System
-Method: GET
-URL: /admin/survey/get-all
-Response Body:
+<b>Get All Surveys in System</b><br />
+Method: GET<br />
+URL: /admin/survey/get-all<br />
+Response Body:<br />
 [
  {
  "id": "WcAvpWyou",
@@ -62,17 +62,19 @@ Response Body:
  "createdOn": "2022-08-20T04:59:47.128Z"
  }
 ]
+<br />
 
-
-Delete Surveys in System
-Method: DELETE
+<b>Delete Surveys in System</b><br />
+Method: DELETE<br />
 URL: /admin/survey/delete?surveyId= (If surveyId is not passed, all the surveys in system will be
-deleted)
-Response Body: DELETED/FAILED
-Submit Survey Response by Participant
-Method: POST
-URL: /participant/submit
-Request Body:
+deleted)<br />
+Response Body: DELETED/FAILED<br />
+<br />
+
+<b>Submit Survey Response by Participant</b><br />
+Method: POST<br />
+URL: /participant/submit<br />
+Request Body:<br />
 {
  "survey_id":"I3aVJ16yn",
  "submitted_by": "John Doe",
@@ -89,10 +91,10 @@ Request Body:
 }
 
 
-Get All Survey Responses by Participant for given surveyId
-Method: GET
+<b>Get All Survey Responses by Participant for given surveyId</b><br />
+Method: GET<br />
 URL: /participant/response/get-by-survey?surveyId=I3aVJ16yn
-Response Body:
+Response Body:<br />
 [
  {
  "id": "Pvg0vscJj",
