@@ -16,12 +16,13 @@ export class Question{
   }
 }
 
-export class Response extends Question{
+export class Response{
+  id: string
+  survey_id: string
   question:string
   selected_choices:[string]
 
   public constructor(input) {
-    super(input)
     this.selected_choices = input.selected_choices
     this.question = input.question
   }
